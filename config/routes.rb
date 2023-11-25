@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get 'accounts/index'
    end
   resources :users
+  resources :rooms
   get 'users/index'
+  get 'rooms/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
