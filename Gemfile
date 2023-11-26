@@ -59,3 +59,6 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "importmap-rails"
+gem "turbo-rails"
+gem "stimulus-rails"

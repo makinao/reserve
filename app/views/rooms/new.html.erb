@@ -1,8 +1,8 @@
 <h3>ユーザー新規作成</h3>
 
-  <% if flash[:notice] %>
-  <p class="notice"><%= flash[:notice] %></p>
-  <% end %>
+<% if flash[:failure] %>
+<p class="alert_failure"><%= flash[:failure] %></p>
+<% end %> 
 
  <%= form_with model: @room do |f| %>
    <table>
@@ -35,7 +35,7 @@
    <div>
      <ul>
        <li><%= f.submit "保存する"%></li>
-       <li><%= link_to "キャンセル", :back %></li>
+       <li><%= link_to "キャンセル", :rooms %></li>
      </ul>
    </div>
  <% end %>
