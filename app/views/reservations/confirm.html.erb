@@ -1,0 +1,32 @@
+<h3>予約確認</h3>
+
+<%= form_with model:@reservation do |f| %>
+  <table>
+    <tr>
+      <th>チェックイン</th>
+      <td><%= @reservation.start_date.strftime("%Y/ %m/ %d") %></td>
+    </tr>
+    <tr>
+      <th>チェックアウト</th>
+      <td><%= @reservation.end_date.strftime("%Y/ %m/ %d") %></td>
+    </tr>
+    <tr>
+      <th>人数</th>
+      <td><%= @reservation.people.to_i %>人</td>
+    </tr>
+    <tr>
+      <th>日数</th>
+      <td><%= @reservation.total.to_i %></td>
+    </tr>
+    <tr>
+      <th>お支払い金額</th>
+      <td><%= @reservation.room.money * @reservation.people.to_i %></td>
+    </tr>
+  </table>
+
+  <p>上記内容で正しければ「確定」ボタンを押してください</p>
+  <ul>
+    <li><%= f.submit "確定" %></li>
+    <li><%= link_to "キャンセル", :back %></li>
+  </ul>
+<% end %>
