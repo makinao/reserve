@@ -1,0 +1,30 @@
+<%= search_form_for @q, url: rooms_search_path do |f| %>
+    <%= f.label :address_cont, "エリア" %>
+    <%= f.search_field :address_cont, placeholder: "エリア名を検索" %>
+    <%= f.label :name_or_content_cont, "キーワード" %>
+    <%= f.search_field :name_or_content_cont, placeholder: "キーワード名を検索" %>
+    <%= f.submit "検索" %>
+  <% end %>  
+
+<h3>あなたも素敵な旅に出よう</h3>
+
+<p>おすすめエリア</p>
+  <div>
+    <span>東京</span>
+    <%= link_to image_tag( '/assets/tokyo.jpg', class: "image", alt: "東京"), rooms_search_path(q:{address_cont:"東京"}) %>
+  <div>
+
+  <div>
+    <span>大阪</span>
+    <%= link_to image_tag( '/assets/osaka.jpg', class: "image", alt: "大阪"), rooms_search_path(q:{address_cont:"大阪"}) %>
+  <div>
+
+  <div>
+    <span>京都</span>
+    <%= link_to image_tag( '/assets/kyoto.jpg', class: "image", alt: "京都"), rooms_search_path(q:{address_cont:"京都"}) %>
+  <div>
+
+  <div>
+    <span>札幌</span>
+    <%= link_to image_tag( '/assets/sapporo.jpg', class: "image", alt: "札幌"), rooms_search_path(q:{address_cont:"札幌"}) %>
+  <div>

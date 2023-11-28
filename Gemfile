@@ -62,3 +62,4 @@ gem 'mini_magick'
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
+gem 'ransack'

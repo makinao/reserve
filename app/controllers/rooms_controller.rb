@@ -43,4 +43,14 @@ class RoomsController < ApplicationController
     flash[:notice] = "予定を削除しました"
     redirect_to :rooms
   end
+
+  def search
+    @q = Room.ransack(params[:q])
+    @rooms = @q.result(distinct: true)
+  end
+
+  def top
+    @q = Room.ransack(params[:q])
+    @rooms = @q.result(distinct: true)
+  end
 end

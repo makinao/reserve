@@ -4,4 +4,6 @@ class Room < ApplicationRecord
   validates :content, presence: true
   validates :address, presence: true
   validates :money, presence: true
+  validates :money, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 9_999_999 },
+                    format: { with: /\A[0-9]+\z/ }
 end
