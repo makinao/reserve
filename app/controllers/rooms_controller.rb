@@ -1,14 +1,17 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @users = current_user
+    @rooms = @users.rooms.all
   end
 
   def new
-    @room = Room.new
+    @user = current_user
+    @room = @user.rooms.new
   end
 
   def create
-    @room = Room.new(params.require(:room).permit(:name, :address, :content, :money, :home_image))
+    @user = current_user
+    @room = @user.rooms.new(params.require(:room).permit(:name, :address, :content, :money, :home_image))
    if @room.save
       flash[:success] = "施設を新規登録しました"
       redirect_to :rooms
@@ -29,7 +32,7 @@ class RoomsController < ApplicationController
   def update
     @room = Room.find(params[:id])
      if @room.update(params.require(:room).permit(:name, :address, :content, :money, :home_image))
-       flash[:success] = "ルームIDが「#{@room.id}」の情報を更新しました"
+       flash[:success] = "「#{@room.id}」の情報を更新しました"
        redirect_to :rooms
      else
        flash.now[:failure] = "施設の更新に失敗しました。"
@@ -45,6 +48,7 @@ class RoomsController < ApplicationController
   end
 
   def search
+    @user = current_user.id
     @q = Room.ransack(params[:q])
     @rooms = @q.result(distinct: true)
   end

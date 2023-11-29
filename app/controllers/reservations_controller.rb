@@ -19,3 +19,4 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :people, :total, :user_id, :room_id))
   end
 end
+end

@@ -1,4 +1,5 @@
 class Room < ApplicationRecord
+  has_many :reservations, dependent: :destroy
   mount_uploader :home_image, HomeImageUploader
   validates :name, presence: true
   validates :content, presence: true
