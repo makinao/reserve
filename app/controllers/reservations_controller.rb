@@ -15,7 +15,8 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to :reservations
     else
-      redirect_to room_path(@room)
+      @room = Room.find(params[:reservation][:room_id])
+      redirect_to room_path(@room), alert: "予約できませんでした"
     end
   end 
 

@@ -1,8 +1,8 @@
 <h3>予約の確認</h3>
 
-  <div>
-    <%= link_to "戻る", :back %>
-  </div>
+<% if @reservation.invalid? %>
+  <h2>入力情報が不十分です</h3>
+<% else %>
 
 <table>
   <tr>
@@ -19,11 +19,11 @@
   </tr>
   <tr>
     <th>日数</th>
-    <td><%= @reservation.total.to_i %></td>
+    <td><%= (@reservation.end_date.to_date - @reservation.start_date.to_date).to_i %>日</td>
   </tr>
   <tr>
     <th>お支払い金額</th>
-    <td><%= @reservation.room.money * @reservation.people.to_i %></td>
+    <td><%= @reservation.room.money * @reservation.people * (@reservation.end_date.to_date - @reservation.start_date.to_date ).to_i %></td>
   </tr>
 </table>
 
@@ -51,3 +51,4 @@
    </tr>
   <% end %>
 </table>
+<% end %>
