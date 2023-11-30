@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'rooms/search'
   get 'reservations/confirm'
   get 'reservations/index'
+  post '/rooms/:room_id/reservations/confirm' => 'reservations#create'
   resources :rooms
   resources :reservations
   resources :users
