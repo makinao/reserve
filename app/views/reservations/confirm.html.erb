@@ -2,6 +2,7 @@
 
 <% if @reservation.invalid? %>
   <h2>入力情報が不十分です</h3>
+  <%= render "shared/error", obj:@reservation %>
 <% else %>
 
 <table>
@@ -18,7 +19,7 @@
     <td><%= @reservation.people.to_i %>人</td>
   </tr>
   <tr>
-    <th>日数</th>
+    <th>宿泊日数</th>
     <td><%= (@reservation.end_date.to_date - @reservation.start_date.to_date).to_i %>日</td>
   </tr>
   <tr>

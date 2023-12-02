@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'rooms#top'
   devise_for :users
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   namespace :users do
     resources :profiles, only: [:edit, :update, :index]
     get 'accounts/index'

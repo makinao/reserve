@@ -1,10 +1,11 @@
-<h3>ユーザー新規作成</h3>
+<h3>施設新規登録</h3>
 
 <% if flash[:failure] %>
 <p class="alert_failure"><%= flash[:failure] %></p>
 <% end %> 
 
  <%= form_with model: @room do |f| %>
+   <%= render "shared/error", obj: @room %>
    <table>
      <tr>
        <th><%= f.label :name ,"施設名" %></th>

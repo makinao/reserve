@@ -23,3 +23,15 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+
+  activerecord:
+    attributes:
+      room:
+        name: 施設名
+        content: 施設詳細
+        address: 住所
+        money: 料金
+      reservation:
+        start_date: チェックイン日
+        end_date: チェックアウト日
+        people: 人数
