@@ -63,3 +63,5 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem 'ransack'
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  root 'rooms#top'
   devise_for :users
   namespace :users do
     resources :profiles, only: [:edit, :update, :index]
     get 'accounts/index'
    end
-  root 'rooms#top'
   get 'users/index'
   get 'rooms/index'
   get 'rooms/search'
