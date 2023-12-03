@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
       redirect_to :reservations
     else
       @room = Room.find(params[:reservation][:room_id])
-      redirect_to room_path(@room), alert: "予約できませんでした"
+      redirect_to room_path(@room), alert: "予約できませんでした", status: :unprocessable_entity
     end
   end 
 
@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :people, :total, :user_id, :room_id))
     @room = Room.find(params[:reservation][:room_id])
     if @room.invalid? 
-      redirect_to :rooms
+      render "rooms/show", status: :unprocessable_entity
     end
   end
 end
