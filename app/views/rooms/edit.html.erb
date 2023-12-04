@@ -1,0 +1,47 @@
+<h3>施設編集</h3>
+
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<% if flash[:success] %>
+  <p class="alert_success"><%= flash[:success] %></p>
+<% else flash[:failure] %>
+  <p class="alert_failure"><%= flash[:failure] %></p>
+ <% end %> 
+ 
+ <%= form_with model: @room do |f| %>
+   <table>
+     <tr>
+       <th><%= f.label :name ,"施設名" %></th>
+       <td><%= f.text_field :name %></td>
+     </tr>
+ 
+     <tr>
+       <th><%= f.label :content ,"施設詳細" %></th>
+       <td><%= f.text_area :content %></td>
+     </tr>
+ 
+     <tr>
+       <th><%= f.label :money ,"料金" %></th>
+       <td><%= f.text_field :money %></td>
+     </tr>
+ 
+     <tr>
+       <th><%= f.label :address ,"住所" %></th>
+       <td><%= f.text_field :address %></td>
+     </tr>
+
+     <tr>
+       <th><%= f.label :home_image ,"画像をアップロード" %></th>
+       <td><%= f.file_field :home_image, class: "home_image" %></td>
+     </tr>
+   </table>
+ 
+   <div>
+     <ul>
+       <li><%= f.submit "編集を完了する"%></li>
+       <li><%= link_to "施設情報に戻る", :rooms %></li>
+     </ul>
+   </div>
+ <% end %>

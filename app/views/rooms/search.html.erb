@@ -1,0 +1,42 @@
+<%= search_form_for @q, url: rooms_search_path do |f| %>
+  <%= f.label :address_cont, "エリア" %>
+  <%= f.search_field :address_cont, placeholder: "エリア名を検索" %>
+  <%= f.label :name_or_content_cont, "キーワード" %>
+  <%= f.search_field :name_or_content_cont, placeholder: "キーワード名を検索" %>
+  <%= f.submit "検索" %>
+<% end %> 
+
+<p>検索結果：<%= @rooms.count %>件見つかりました</p>
+ <table>
+ <% @rooms.each do |room| %>
+  <tr>
+    <th>画像</th>
+    <td>
+      <% if room.home_image? %>
+          <%= image_tag room.home_image.url, class:'home_image' %>
+      <% else %>
+          <%= image_tag '/assets/default-home.png',:alt => '施設画像', class:'home_image' %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>施設名</th>
+    <td><%= room.name %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= room.address %></td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td><%= room.money %></td>
+  </tr>
+  <tr>
+    <th>施設詳細</th>
+    <td><%= room.content %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "詳細はこちら", room  %></td>
+  </tr>
+  <% end %>
+</table>
