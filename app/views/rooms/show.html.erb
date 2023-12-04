@@ -35,7 +35,6 @@
 </table>
 
 <%= form_with model: @reservation, method: :get, url:reservations_confirm_path(@room), local: true do |f| %>
-  <%= render 'rooms/shared/error', model: f.object %>
     <table>
 
        <tr>
@@ -57,6 +56,5 @@
 
          <td><%= f.submit "予約確認画面へ"  %></td>
 
-    </table>
-    
+    </table> 
 <% end %>

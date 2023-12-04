@@ -22,9 +22,10 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :people, :total, :user_id, :room_id))
-    @room = Room.find(params[:reservation][:room_id])
-    if @room.invalid? 
-      render "rooms/show", status: :unprocessable_entity
+    unless
+      @reservation.valid?
+      @room = Room.find(params[:reservation][:room_id])
+      render "rooms/show"
     end
   end
 end
